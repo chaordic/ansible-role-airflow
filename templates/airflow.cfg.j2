@@ -247,6 +247,22 @@ flower_port = {{ airflow_flower_port }}
 # Default queue that tasks get assigned to and that worker listen on.
 default_queue = {{ airflow_celery_default_queue }}
 
+[celery_broker_transport_options]
+# This section is for specifying options which can be passed to the
+# underlying celery broker transport.  See:
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-broker_transport_options
+
+# The visibility timeout defines the number of seconds to wait for the worker
+# to acknowledge the task before the message is redelivered to another worker.
+# Make sure to increase the visibility timeout to match the time of the longest
+# ETA you're planning to use.
+#
+# visibility_timeout is only supported for Redis and SQS celery brokers.
+# See:
+#   http://docs.celeryproject.org/en/master/userguide/configuration.html#std:setting-broker_transport_options
+#
+visibility_timeout = {{ airflow_celery_broker_transport_options_visibility_timeout }}
+
 
 [scheduler]
 # Task instances listen for external kill signal (when you clear tasks

@@ -179,6 +179,7 @@ airflow_celery_worker_log_server_port: 8793
 airflow_celery_broker_url: sqla+mysql://airflow:airflow@localhost:3306/airflow
 airflow_celery_result_backend: db+mysql://airflow:airflow@localhost:3306/airflow
 airflow_celery_default_queue: default
+airflow_celery_broker_transport_options_visibility_timeout: 21600
 celery_extra_packages: # DICT
 
 celery_version: 3.1.17 # This Celery version is guaranteed to work with Airflow 1.8.x
