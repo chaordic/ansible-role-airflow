@@ -89,7 +89,7 @@
     skip_ansible_lint
 
 - name: Airflow | Add connections from configuration file
-  command: "{{ airflow_executable }} connections -a --conn_id {{ item.conn_id }} --conn_type {{ item.conn_type }} --conn_host {{ item.conn_host }} --conn_port {{ item.conn_port }}"
+  command: "{{ airflow_executable }} connections -a {% for key, value in item.items() %}--{{ key }} '{{ value }}' {% endfor %}"
   environment:
     AIRFLOW_HOME: "{{ airflow_home }}"
   become: true
