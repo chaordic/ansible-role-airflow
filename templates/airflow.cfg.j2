@@ -22,6 +22,9 @@ encrypt_s3_logs = {{ airflow_encrypt_s3_logs }}
 # DEPRECATED option for remote log storage, use remote_base_log_folder instead!
 s3_log_folder = {{ airflow_s3_log_folder }}
 
+logging_config_class = {{ airflow_logging_config_class }}
+task_log_reader = {{ airflow_task_log_reader }}
+
 # The executor class that airflow should use. Choices include
 # SequentialExecutor, LocalExecutor, CeleryExecutor
 executor = {{ airflow_executor }}

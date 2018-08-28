@@ -80,6 +80,8 @@ airflow_remote_base_log_folder:
 airflow_remote_log_conn_id:
 airflow_encrypt_s3_logs: False
 airflow_s3_log_folder: # DEPRECATED
+airflow_task_log_reader: file.task
+airflow_logging_config_class: 
 
 # DB
 airflow_database_conn: sqlite:////etc/airflow/airflow.db
