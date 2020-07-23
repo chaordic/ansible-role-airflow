@@ -105,19 +105,19 @@
     - airflow_extra_packages
     - ansible_version.full is version_compare('2.7', '<')
 
-# https://github.com/idealista/airflow-role/issues/50
 - name: Airflow | Installing Airflow Extra Packages
   pip:
     name: "apache-airflow[{{ airflow_extra_packages | join(', ') }}]"
     version: "{{ airflow_version }}"
     virtualenv: "{{ airflow_virtualenv }}"
     virtualenv_python: "{{ airflow_python_version }}"
-  when: airflow_extra_packages
+  when:
+  - airflow_extra_packages
+  - ansible_version.full is version_compare('2.7', '>=')
 
 - name: Airflow | Installing DAGs dependencies
   pip:
     name: "{{ dags_dependencies }}"
-    version: "{{ item.version }}"
     virtualenv: "{{ airflow_virtualenv }}"
     virtualenv_python: "{{ airflow_python_version }}"
   when: dags_dependencies
