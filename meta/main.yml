@@ -1,13 +1,10 @@
 ---
 galaxy_info:
-  company: Idealista S.A.
+  company: Idealista S.A.U.
   description: Apache Airflow role
-  min_ansible_version: 2.4.1.0
+  min_ansible_version: 2.4.5.0
   license: Apache 2.0
   platforms:
     - name: Debian
       versions:
         - stretch
-    - name: Ubuntu
-      versions:
-        - xenial

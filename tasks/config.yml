@@ -1,5 +1,4 @@
 ---
-
 - name: Airflow | Ensure airflow directories structure
   file:
     path: "{{ item }}"
@@ -22,7 +21,7 @@
 
 - name: Airflow | Copy basic airflow config file
   template:
-    src: "airflow.cfg.j2"
+    src: "{{ airflow_config_template_path }}"
     dest: "{{ airflow_home }}/airflow.cfg"
     owner: "{{ airflow_user }}"
     group: "{{ airflow_group }}"
@@ -90,7 +89,7 @@
     skip_ansible_lint
 
 - name: Airflow | Add connections from configuration file
-  command: "{{ airflow_executable }} connections -a {% for key, value in item.iteritems() %}--{{ key }} '{{ value }}' {% endfor %}"
+  command: "{{ airflow_executable }} connections -a {% for key, value in item.items() %}--{{ key }} '{{ value }}' {% endfor %}"
   environment:
     AIRFLOW_HOME: "{{ airflow_home }}"
   become: true

@@ -4,6 +4,40 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/airflow-role/tree/develop)
 
+## [1.8.0](https://github.com/idealista/airflow-role/tree/1.8.0)
+[Full Changelog](https://github.com/idealista/airflow-role/compare/1.7.3...1.8.0)
+### Added
+- *[#61](https://github.com/idealista/airflow-role/issues/61) Add KillSignal=SIGINT to workers service file* @jnogol
+### Fixed
+- *[#50](https://github.com/idealista/airflow-role/issues/50) Fix deprecation warning from jinja templates* @adrimarteau @jnogol
+
+## [1.7.3](https://github.com/idealista/airflow-role/tree/1.7.3)
+[Full Changelog](https://github.com/idealista/airflow-role/compare/1.7.2...1.7.3)
+### Fixed
+- *[#55](https://github.com/idealista/airflow-role/pull/55) Use `{{ airflow_home }}` to set the default `airflow_database_conn` in defaults/main.yml* @davestern
+
+## [1.7.2](https://github.com/idealista/airflow-role/tree/1.7.2)
+[Full Changelog](https://github.com/idealista/airflow-role/compare/1.7.1...1.7.2)
+### Fixed
+- *[#47](https://github.com/idealista/airflow-role/issues/47) Fix web UI when using LDAP and Airflow>=1.10* @jnogol
+
+## [1.7.1](https://github.com/idealista/airflow-role/tree/1.7.1)
+[Full Changelog](https://github.com/idealista/airflow-role/compare/1.7.0...1.7.1)
+### Changed
+- *[#44](https://github.com/idealista/airflow-role/issues/44) Make role compatible with Airflow 1.10.0* @jnogol
+- *Update Goss version to 0.3.6* @jnogol
+
+## [1.7.0](https://github.com/idealista/airflow-role/tree/1.7.0)
+[Full Changelog](https://github.com/idealista/airflow-role/compare/1.6.0...1.7.0)
+### Changed
+- *Update default version to 1.9.0* @jnogol
+- *Ability to provide `airflow.cfg` template via playbooks* @jnogol
+- *[#41](https://github.com/idealista/airflow-role/issues/41) Update `airflow.cfg` template with 1.9.0 features* @jnogol
+
+### Added
+- *Add sample DAG in tests to avoid scheduler issues* @jnogol
+- *Add `airflow_` tags in `main.yml`* @jnogol
+
 ## [1.6.0](https://github.com/idealista/airflow-role/tree/1.6.0)
 [Full Changelog](https://github.com/idealista/airflow-role/compare/1.5.0...1.6.0)
 ### Changed

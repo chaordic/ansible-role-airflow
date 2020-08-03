@@ -19,14 +19,14 @@ This ansible role installs a Apache Airflow server in a Debian/Ubuntu environmen
 
 ## Getting Started
 
-These instructions will get you a copy of the role for your ansible playbook. Once launched, it will install a [Apache Airflow](https://airflow.incubator.apache.org/) server in a Debian or Ubuntu system.
+These instructions will get you a copy of the role for your ansible playbook. Once launched, it will install a [Apache Airflow](https://airflow.apache.org/) server in a Debian or Ubuntu system.
 
 ### Prerequisities
 
-Ansible 2.4.1.0 version installed.
+Ansible 2.3.3.0 version installed.
 Inventory destination should be a Debian or Ubuntu environment.
 
-For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [landrush](https://github.com/vagrant-landrush/landrush) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
+For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Docker](https://www.docker.com/) as driver.
 
 ### Installing
 
@@ -35,7 +35,7 @@ Create or add to your roles dependency file (e.g requirements.yml) from GitHub:
 ```
 - src: http://github.com/idealista/airflow-role.git
   scm: git
-  version: 1.0.0
+  version: 1.7.2
   name: airflow
 ```
 
@@ -43,6 +43,8 @@ or using [Ansible Galaxy](https://galaxy.ansible.com/idealista/airflow-role/) as
 
 ```
 - src: idealista.airflow-role
+  version: 1.7.2
+  name: airflow
 ```
 
 Install the role with ansible-galaxy command:
@@ -64,17 +66,28 @@ Use in a playbook:
 
 Look to the defaults properties file to see the possible configuration properties.
 
+Bear in mind that, starting with Airflow v1.10.0, PyPi package `pyasn1` v0.4.4 is needed. To install it:
+``` yml
+airflow_required_python_packages:
+  - {name: pyasn1, version: 0.4.4}
+```
+
+`airflow_extra_packages` (available at: https://airflow.apache.org/installation.html#extra-packages) should be a list following this format:
+``` yml
+airflow_extra_packages:
+  - celery
+  - mysql
+```
 ## Testing
 
 ```
-molecule test --platform=Debian9
+pipenv install -r test-requirements.txt --python 2.7
+pipenv run molecule test
 ```
-
-See molecule.yml to check possible testing platforms.
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.4.1.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.4.5.0-green.svg)
 
 ## Versioning
 
@@ -90,9 +103,9 @@ See also the list of [contributors](https://github.com/idealista/airflow-role/co
 
 ## License
 
-![Apache 2.0 Licence](https://img.shields.io/hexpm/l/plug.svg)
+![Apache 2.0 License](https://img.shields.io/hexpm/l/plug.svg)
 
-This project is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license - see the [LICENSE.txt](LICENSE.txt) file for details.
+This project is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license - see the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
